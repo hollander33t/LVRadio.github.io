@@ -1,0 +1,73 @@
+html, body {
+  margin: 0; padding: 0; height: 100%; width: 100%;
+  overflow: hidden;
+  font-family: 'Inter', Arial, sans-serif;
+  color: white;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Achtergrond-container die gaat shaken */
+#background-container {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://i.imgur.com/3elnpuL.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+  will-change: transform;
+  transition: transform 0.1s ease-in-out;
+}
+
+/* Tekstcontainer blijft centraal en stil */
+.overlay {
+  background: rgba(0, 0, 0, 0.444);
+  padding: 10px 20px;
+  border-radius: 12px;
+  max-width: 90vw;
+  transition: padding 0.5s ease;
+  position: relative;
+  z-index: 10;
+}
+
+h1, h2 {
+  margin: 0;
+  text-shadow: 0 0 15px rgba(0,0,0,0.8);
+  transition: all 0.5s ease-in-out;
+}
+
+body.not-playing .overlay {
+  padding: 10px 20px;
+}
+
+body.not-playing #track-title {
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+body.not-playing #track-artist {
+  font-size: 1rem;
+  opacity: 0.6;
+}
+
+body.playing #track-title {
+  font-size: 3rem;
+  animation: pulse 6s infinite ease-in-out;
+  opacity: 1;
+}
+
+body.playing #track-artist {
+  font-size: 2rem;
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+  100% { transform: scale(1); }
+}
